@@ -56,7 +56,6 @@ select {
 #scroll-area #currency-info #exchange-rates {
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  background-color: yellow;
   width: 100%;
 }
 
@@ -64,21 +63,10 @@ select {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-}
-
-#scroll-area #currency-info #exchange-rates .my-currency {
-  color: darkgreen;
+  text-align: center;
 }
 
 #scroll-area #currency-info #exchange-rates #SELF {
   display: none;
-}
-
-#test-flexbox {
-  width: 100%;
-  background-color: red;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 /*# sourceMappingURL=custom.css.map */

@@ -50,15 +50,11 @@ select {
 
     #exchange-rates {
       justify-content: space-around;
-      background-color: yellow;
       width: 100%;
 
       div {
         flex-grow: 1;
-      }
-
-      .my-currency {
-        color: darkgreen;
+        text-align: center;
       }
 
       #SELF {
@@ -66,10 +62,4 @@ select {
       }
     }
   }
-}
-
-#test-flexbox {
-  width: 100%;
-  background-color: red;
-  justify-content: center;
 }

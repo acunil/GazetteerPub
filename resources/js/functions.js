@@ -34,17 +34,22 @@ export const renderDom = info => {
     SELF: new Number(exchangeRates[currencyCode]),
   };
 
+  // format numbers correctly
   for (let code in xrConverted) {
     xrConverted[code] *= adjustmentMultiplier;
     xrConverted[code] /= xrConverted.SELF;
     xrConverted[code] = Math.round(xrConverted[code] * 100) / 100;
     xrConverted[code] = xrConverted[code].toFixed(2);
   }
+
+  // multiply SELF
   xrConverted.SELF *= adjustmentMultiplier;
 
   // add non-main currency to DOM
   $("#SELF").hide();
-  if (!["GBP", "EUR", "USD"].includes(currencyCode)) {
+  if (["GBP", "EUR", "USD"].includes(currencyCode)) {
+    $("#SELF").hide();
+  } else {
     $("#SELF").show();
   }
 
@@ -67,7 +72,7 @@ export const renderDom = info => {
   $("#capital-name span").html(capitalName);
   $("#currency-name span").html(currencyName + " " + currencyCode);
   $("#currency-code span").html(
-    currencySymbol + numberWithCommas(xrConverted.SELF)
+    currencySymbol + numberWithCommas(xrConverted.SELF) + " is worth..."
   );
 
   // exchange rates here
