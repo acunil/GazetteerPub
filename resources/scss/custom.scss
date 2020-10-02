@@ -9,12 +9,14 @@ h1 {
 
 .flex-container {
   display: flex;
-  align-items: center;
-  height: 2em;
 }
 
-.flex-container * {
-  padding: 0 5px;
+.option {
+  align-items: center;
+  height: 2em;
+  * {
+    padding: 0 5px;
+  }
 }
 
 select {

@@ -40,7 +40,7 @@ $(() => {
     if (data && data["img_src"]) {
       let img_src = data["img_src"];
       let template = $(
-        `<div class='flex-container'><img src="${img_src}" style="width:auto;height:1em;"/><p style="position:relative; top:6px;">${text}</p></div>`
+        `<div class='flex-container option'><img src="${img_src}" style="width:auto;height:1em;"/><p style="position:relative; top:6px;">${text}</p></div>`
       );
       return template;
     }
