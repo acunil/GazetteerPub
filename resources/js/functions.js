@@ -1,3 +1,33 @@
+// exchangeRate calculator, returns an object
+const exchangeRatesConverted = () => {
+  let n = {
+    GBP: exchangeRates.GBP,
+    USD: exchangeRates.USD,
+    EUR: exchangeRates.EUR,
+    SELF: exchangeRates[currencyCode],
+  };
+
+  // variable to deal with low value currencies
+  let adjustmentMultiplier = 1;
+  switch (n.SELF) {
+    case n.SELF >= 10:
+      adjustmentMultiplier *= 10;
+    case n.SELF >= 100:
+      adjustmentMultiplier *= 10;
+    case n.SELF >= 1000:
+      adjustmentMultiplier *= 10;
+    case n.SELF >= 10000:
+      adjustmentMultiplier *= 10;
+  }
+
+  for (let code in n) {
+    n[code] = Math.round(n[code] * 100 * adjustmentMultiplier) / 100;
+    n[code] /= n.self;
+  }
+
+  return n;
+};
+
 // Function which accepts one argument - info - will be the countryInfo object with all the data
 export const renderDom = info => {
   // Access data and assign to variables
@@ -19,26 +49,13 @@ export const renderDom = info => {
   $("#population span").html(population);
   $("#languages span").html(languages); // switch to forEach for multiple langs
   $("#capital-name span").html(capitalName);
-  $("#currency-name span").html(currencyName + " " + currencySymbol);
+  $("#currency-name span").html(
+    currencyName + " " + currencySymbol + exchangeRatesConverted.SELF
+  );
   $("#currency-code span").html(currencyCode);
 
-  // exchange rates here, placeholders only!!!!
-  $("#GBP span").html(exchangeRates.GBP);
-  $("#USD span").html(exchangeRates.USD);
-  $("#EUR span").html(exchangeRates.EUR);
-};
-
-// exchangeRate calculator
-const calculateExchangeRates = () => {
-  let n = {
-    gbp: exchangeRates.GBP,
-    usd: exchangeRates.USD,
-    eur: exchangeRates.EUR,
-    self: exchangeRates[currencyCode],
-  };
-
-  for (let code in n) {
-    n[code] = Math.round(n[code] * 100) / 100;
-    n[code] /= n.self;
-  }
+  // exchange rates here
+  $("#GBP span").html(exchangeRatesConverted.GBP);
+  $("#USD span").html(exchangeRatesConverted.USD);
+  $("#EUR span").html(exchangeRatesConverted.EUR);
 };
