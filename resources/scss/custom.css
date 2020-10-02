@@ -1,0 +1,32 @@
+select {
+  border-radius: 3px;
+}
+
+h1 {
+  color: red;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.flex-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 2em;
+}
+
+.flex-container * {
+  padding: 0 5px;
+}
+
+select {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  height: auto;
+}
+
+.select2-container--default .select2-selection--single {
+  height: auto;
+}
+/*# sourceMappingURL=custom.css.map */
