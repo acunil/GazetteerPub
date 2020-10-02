@@ -13,29 +13,39 @@ export const renderDom = info => {
 
   // exchangeRates of relevant currencies to be manipulated
   const xrConverted = {
-    GBP: exchangeRates.GBP,
-    USD: exchangeRates.USD,
-    EUR: exchangeRates.EUR,
-    SELF: exchangeRates[currencyCode],
+    GBP: new Number(exchangeRates.GBP),
+    USD: new Number(exchangeRates.USD),
+    EUR: new Number(exchangeRates.EUR),
+    SELF: new Number(exchangeRates[currencyCode]),
   };
+  console.log(currencyCode);
+  console.log(exchangeRates);
+  console.log(xrConverted);
 
   // variable to deal with low value currencies
   let adjustmentMultiplier = 1;
-  switch (xrConverted.SELF) {
-    case xrConverted.SELF >= 10:
+  switch (exchangeRates[currencyCode]) {
+    case exchangeRates[currencyCode] >= 10:
+      console.log("SELF is >=10");
       adjustmentMultiplier *= 10;
-    case xrConverted.SELF >= 100:
+    case exchangeRates[currencyCode] >= 100:
+      console.log("SELF is >=100");
       adjustmentMultiplier *= 10;
-    case xrConverted.SELF >= 1000:
+    case exchangeRates[currencyCode] >= 1000:
+      console.log("SELF is >=1000");
       adjustmentMultiplier *= 10;
-    case xrConverted.SELF >= 10000:
+    case exchangeRates[currencyCode] >= 10000:
+      console.log("SELF is >=10000");
       adjustmentMultiplier *= 10;
-    case xrConverted.SELF >= 100000:
+    case exchangeRates[currencyCode] >= 100000:
+      console.log("SELF is >=100000");
       adjustmentMultiplier *= 10;
   }
+  console.log(adjustmentMultiplier);
 
   for (let code in xrConverted) {
-    xrConverted[code] = Math.round(xrConverted[code] * 100) / 100;
+    xrConverted[code] =
+      (Math.round(xrConverted[code] * 100) / 100) * adjustmentMultiplier;
     xrConverted[code] /= xrConverted.SELF;
   }
 
