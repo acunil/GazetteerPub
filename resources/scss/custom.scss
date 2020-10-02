@@ -24,6 +24,28 @@ body {
   }
 }
 
+#main-container {
+  background-color: lightblue;
+  height: 100%;
+}
+
+#loading {
+  display: flex;
+  position: absolute;
+  top: 35px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: navy;
+  color: white;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    font-size: 2em;
+  }
+}
+
 select {
   border-radius: 3px;
 
@@ -36,7 +58,13 @@ select {
   height: auto;
 }
 
+#map {
+  height: 300px;
+  background-color: skyblue;
+}
+
 #scroll-area {
+  text-align: center;
   span {
     font-size: 1.3em;
   }
@@ -50,15 +78,11 @@ select {
 
     #exchange-rates {
       justify-content: space-around;
-      background-color: yellow;
       width: 100%;
 
       div {
         flex-grow: 1;
-      }
-
-      .my-currency {
-        color: darkgreen;
+        text-align: center;
       }
 
       #SELF {
@@ -66,10 +90,4 @@ select {
       }
     }
   }
-}
-
-#test-flexbox {
-  width: 100%;
-  background-color: red;
-  justify-content: center;
 }
