@@ -5,14 +5,24 @@ export const renderDom = info => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
+  // Check currency object is valid
+  var currencies = info.restCountries.data.currencies;
+  var currencyObject;
+  for (let i = 0; i < currencies.length; i++) {
+    if (currencies[i].code.length === 3) {
+      currencyObject = currencies[i];
+      break;
+    }
+  }
+
   // Access data and assign to variables
   var countryName = info.restCountries.data.name,
     population = info.restCountries.data.population,
     languages = info.restCountries.data.languages,
     capitalName = info.restCountries.data.capital,
-    currencyCode = info.restCountries.data.currencies[0].code,
-    currencyName = info.restCountries.data.currencies[0].name,
-    currencySymbol = info.restCountries.data.currencies[0].symbol,
+    currencyCode = currencyObject.code,
+    currencyName = currencyObject.name,
+    currencySymbol = currencyObject.symbol,
     exchangeRates = info.openExchangeRates.data.rates,
     currencyValueToUSD = exchangeRates[currencyCode];
 
@@ -34,17 +44,24 @@ export const renderDom = info => {
     SELF: new Number(exchangeRates[currencyCode]),
   };
 
+  // format numbers correctly
   for (let code in xrConverted) {
     xrConverted[code] *= adjustmentMultiplier;
     xrConverted[code] /= xrConverted.SELF;
     xrConverted[code] = Math.round(xrConverted[code] * 100) / 100;
     xrConverted[code] = xrConverted[code].toFixed(2);
   }
-  xrConverted.SELF *= adjustmentMultiplier;
+
+  // multiply SELF
+  if (adjustmentMultiplier > 1) {
+    xrConverted.SELF *= adjustmentMultiplier;
+  }
 
   // add non-main currency to DOM
   $("#SELF").hide();
-  if (!["GBP", "EUR", "USD"].includes(currencyCode)) {
+  if (["GBP", "EUR", "USD"].includes(currencyCode)) {
+    $("#SELF").hide();
+  } else {
     $("#SELF").show();
   }
 
@@ -67,7 +84,7 @@ export const renderDom = info => {
   $("#capital-name span").html(capitalName);
   $("#currency-name span").html(currencyName + " " + currencyCode);
   $("#currency-code span").html(
-    currencySymbol + numberWithCommas(xrConverted.SELF)
+    currencySymbol + numberWithCommas(xrConverted.SELF) + " is worth..."
   );
 
   // exchange rates here

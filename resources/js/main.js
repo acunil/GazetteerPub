@@ -15,6 +15,9 @@ import { renderDom } from "./functions.js";
 //
 //
 $(() => {
+  // Show loading screen
+  $("#loading").css({ display: "flex" });
+
   // Global object to store current country information.
   // - used as reference to build DOM
   // - added to localstorage (and database) under Gazetteer['gbr']
@@ -118,19 +121,13 @@ $(() => {
       countryInfo = JSON.parse(localStorage.getItem("Gazetteer"))[
         currentCountryCode
       ];
-
       // run renderDom
       renderDom(countryInfo);
     }
-
     console.warn("Current Country Info (countryInfo) to be used in DOM: ");
     console.log(countryInfo);
 
-    // RENDER DOM FROM countryInfo object
-    //
-    //
-    //
-
-    // Call renderDom with current countryInfo object
+    // hide loading screen
+    $("#loading").css({ display: "none" });
   }); // end of onchange
 });
