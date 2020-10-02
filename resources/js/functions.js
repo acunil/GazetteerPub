@@ -1,9 +1,14 @@
 // Function which accepts one argument - info - will be the countryInfo object with all the data
 export const renderDom = info => {
+  // function to add commas to thousands
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   // Access data and assign to variables
   var countryName = info.restCountries.data.name,
     population = info.restCountries.data.population,
-    languages = info.restCountries.data.languages[0].name,
+    languages = info.restCountries.data.languages,
     capitalName = info.restCountries.data.capital,
     currencyCode = info.restCountries.data.currencies[0].code,
     currencyName = info.restCountries.data.currencies[0].name,
@@ -37,10 +42,10 @@ export const renderDom = info => {
   }
   xrConverted.SELF *= adjustmentMultiplier;
 
-  // add non-main currencies to DOM
+  // add non-main currency to DOM
+  $("#SELF").hide();
   if (!["GBP", "EUR", "USD"].includes(currencyCode)) {
-    let template = $(`<p id="SELF">${currencyCode}: <span></span></p>`);
-    $("#exchange-rates").append(template);
+    $("#SELF").show();
   }
 
   // Proceed to populate DOM with jQuery
@@ -48,15 +53,28 @@ export const renderDom = info => {
   //
   //
   $("#country-name span").html(countryName);
-  $("#population span").html(Math.round(population / 10000) * 10000);
-  $("#languages span").html(languages); // switch to forEach for multiple langs
+  $("#population span").html(
+    numberWithCommas(Math.round(population / 10000) * 10000)
+  );
+
+  // languages loop
+  let languageNames = languages.reduce((acc, el) => {
+    acc.push(el.name);
+    return acc;
+  }, []);
+  $("#languages span").html(languageNames.join(", ")); // switch to forEach for multiple langs
+
   $("#capital-name span").html(capitalName);
   $("#currency-name span").html(currencyName + " " + currencyCode);
-  $("#currency-code span").html(currencySymbol + xrConverted.SELF);
+  $("#currency-code span").html(
+    currencySymbol + numberWithCommas(xrConverted.SELF)
+  );
 
   // exchange rates here
   $("#GBP span").html(xrConverted.GBP);
   $("#USD span").html(xrConverted.USD);
   $("#EUR span").html(xrConverted.EUR);
-  $("#SELF span").html(xrConverted.SELF);
+  $("#SELF").html(
+    `${currencyCode}: <span>${numberWithCommas(xrConverted.SELF)}</span>`
+  );
 };

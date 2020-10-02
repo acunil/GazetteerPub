@@ -40,4 +40,36 @@ select {
   span {
     font-size: 1.3em;
   }
+
+  #country-info {
+    padding: 5px;
+  }
+
+  #currency-info {
+    padding: 5px;
+
+    #exchange-rates {
+      justify-content: space-around;
+      background-color: yellow;
+      width: 100%;
+
+      div {
+        flex-grow: 1;
+      }
+
+      .my-currency {
+        color: darkgreen;
+      }
+
+      #SELF {
+        display: none;
+      }
+    }
+  }
+}
+
+#test-flexbox {
+  width: 100%;
+  background-color: red;
+  justify-content: center;
 }
