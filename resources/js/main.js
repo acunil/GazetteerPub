@@ -109,12 +109,18 @@ $(() => {
         console.log(gazetteerObj);
         // Added to localStorage for future requests
         localStorage.setItem("Gazetteer", JSON.stringify(gazetteerObj));
+
+        // run renderDom
+        renderDom(countryInfo);
       })();
     } else {
       // else pull data from localStorage and apply to global variable countryInfo
       countryInfo = JSON.parse(localStorage.getItem("Gazetteer"))[
         currentCountryCode
       ];
+
+      // run renderDom
+      renderDom(countryInfo);
     }
 
     console.warn("Current Country Info (countryInfo) to be used in DOM: ");
@@ -126,6 +132,5 @@ $(() => {
     //
 
     // Call renderDom with current countryInfo object
-    renderDom(countryInfo);
   }); // end of onchange
 });
