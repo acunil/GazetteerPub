@@ -1,3 +1,7 @@
+body {
+  font-size: 10pt;
+}
+
 #title-logo {
   color: navy;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
@@ -25,6 +29,7 @@ select {
 
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   height: auto;
+  width: 100%;
 }
 
 .select2-container--default .select2-selection--single {
