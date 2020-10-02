@@ -11,6 +11,13 @@ export const renderDom = info => {
     exchangeRates = info.openExchangeRates.data.rates,
     currencyValueToUSD = exchangeRates[currencyCode];
 
+  // variable to deal with low value currencies
+  let adjustmentMultiplier = 1;
+  console.error(exchangeRates[currencyCode]);
+  while (adjustmentMultiplier < exchangeRates[currencyCode]) {
+    adjustmentMultiplier *= 10;
+    console.log("adjustmentMultiplier is now " + adjustmentMultiplier);
+  }
   // exchangeRates of relevant currencies to be manipulated
   const xrConverted = {
     GBP: new Number(exchangeRates.GBP),
@@ -18,36 +25,17 @@ export const renderDom = info => {
     EUR: new Number(exchangeRates.EUR),
     SELF: new Number(exchangeRates[currencyCode]),
   };
-  console.log(currencyCode);
-  console.log(exchangeRates);
-  console.log(xrConverted);
-
-  // variable to deal with low value currencies
-  let adjustmentMultiplier = 1;
-  switch (exchangeRates[currencyCode]) {
-    case exchangeRates[currencyCode] >= 10:
-      console.log("SELF is >=10");
-      adjustmentMultiplier *= 10;
-    case exchangeRates[currencyCode] >= 100:
-      console.log("SELF is >=100");
-      adjustmentMultiplier *= 10;
-    case exchangeRates[currencyCode] >= 1000:
-      console.log("SELF is >=1000");
-      adjustmentMultiplier *= 10;
-    case exchangeRates[currencyCode] >= 10000:
-      console.log("SELF is >=10000");
-      adjustmentMultiplier *= 10;
-    case exchangeRates[currencyCode] >= 100000:
-      console.log("SELF is >=100000");
-      adjustmentMultiplier *= 10;
-  }
-  console.log(adjustmentMultiplier);
+  // console.log(currencyCode);
+  // console.log(exchangeRates);
+  // console.log(xrConverted);
 
   for (let code in xrConverted) {
-    xrConverted[code] =
-      (Math.round(xrConverted[code] * 100) / 100) * adjustmentMultiplier;
+    xrConverted[code] *= adjustmentMultiplier;
     xrConverted[code] /= xrConverted.SELF;
+    xrConverted[code] = Math.round(xrConverted[code] * 100) / 100;
+    xrConverted[code] = xrConverted[code].toFixed(2);
   }
+  xrConverted.SELF *= adjustmentMultiplier;
 
   // Proceed to populate DOM with jQuery
   //
