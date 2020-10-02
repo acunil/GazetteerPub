@@ -25,11 +25,6 @@ $(() => {
     localStorage.setItem("Gazetteer", JSON.stringify({})); // '{}'
   }
 
-  // create countries select element and add to DOM
-  $("header").append(
-    `<select id="countries"><option>Select a country</option></select>`
-  );
-
   // forEach through the countries list to populate options for the select box
   countryListAllIsoData.forEach(country => {
     let code3 = country["code3"].toLowerCase();
@@ -45,7 +40,7 @@ $(() => {
     if (data && data["img_src"]) {
       let img_src = data["img_src"];
       let template = $(
-        `<div class='flex-container'><img src="${img_src}" style="width:auto;height:1em;"/><p style="position:relative; top:6px;">${text}</p></div>`
+        `<div class='flex-container option'><img src="${img_src}" style="width:auto;height:1em;"/><p style="position:relative; top:6px;">${text}</p></div>`
       );
       return template;
     }

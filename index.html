@@ -24,6 +24,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./resources/scss/custom.css" />
+    <link rel="icon" type="image/png" href="./resources/img/globe.png" />
 
     <title>Gazetteer</title>
   </head>
@@ -31,13 +32,42 @@
   <!-- -----------------------------------------BODY--------------------------------------------- -->
 
   <body>
-    <header>
-      <h1>Gazetteer</h1>
-    </header>
-    <main>
-      <div id="map"></div>
-      <div id="scroll-area"></div>
-    </main>
+    <div id="main-container">
+      <!-- Header -->
+      <header>
+        <div id="title-logo" class="flex-container">
+          <p>Gazetteer</p>
+          <img src="./resources/img/globe.png" alt="" />
+        </div>
+        <select id="countries">
+          <option value="Select a country">Select a country</option>
+        </select>
+      </header>
+
+      <main>
+        <!-- Map -->
+        <div id="map"></div>
+
+        <!-- Scroll Area -->
+        <section id="scroll-area">
+          <div id="country-info">
+            <p id="country-name">Country name: <span></span></p>
+            <p id="population">Population: <span></span></p>
+            <p id="languages">Languages: <span></span></p>
+            <p id="capital-name">Capital city: <span></span></p>
+          </div>
+          <div id="currency-info">
+            <p>Currency: <span></span></p>
+            <p id="currency-code"></p>
+            <div id="exchange-rates" class="flex-container">
+              <p id="GBP">GBP: <span></span></p>
+              <p id="USD">USD: <span></span></p>
+              <p id="EUR">EUR: <span></span></p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
 
     <!-- --------------------------------------------END OF VISIBLE CONTENT-------------------------------------------- -->
 
