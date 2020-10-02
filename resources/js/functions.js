@@ -5,14 +5,24 @@ export const renderDom = info => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
+  // Check currency object is valid
+  var currencies = info.restCountries.data.currencies;
+  var currencyObject;
+  for (let i = 0; i < currencies.length; i++) {
+    if (currencies[i].code.length === 3) {
+      currencyObject = currencies[i];
+      break;
+    }
+  }
+
   // Access data and assign to variables
   var countryName = info.restCountries.data.name,
     population = info.restCountries.data.population,
     languages = info.restCountries.data.languages,
     capitalName = info.restCountries.data.capital,
-    currencyCode = info.restCountries.data.currencies[0].code,
-    currencyName = info.restCountries.data.currencies[0].name,
-    currencySymbol = info.restCountries.data.currencies[0].symbol,
+    currencyCode = currencyObject.code,
+    currencyName = currencyObject.name,
+    currencySymbol = currencyObject.symbol,
     exchangeRates = info.openExchangeRates.data.rates,
     currencyValueToUSD = exchangeRates[currencyCode];
 
@@ -43,7 +53,9 @@ export const renderDom = info => {
   }
 
   // multiply SELF
-  xrConverted.SELF *= adjustmentMultiplier;
+  if (adjustmentMultiplier > 1) {
+    xrConverted.SELF *= adjustmentMultiplier;
+  }
 
   // add non-main currency to DOM
   $("#SELF").hide();

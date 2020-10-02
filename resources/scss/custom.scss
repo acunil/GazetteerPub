@@ -24,8 +24,9 @@ body {
   }
 }
 
-main {
-  background-color: greenyellow;
+#main-container {
+  background-color: lightblue;
+  height: 100%;
 }
 
 #loading {
@@ -55,6 +56,11 @@ select {
 
 .select2-container--default .select2-selection--single {
   height: auto;
+}
+
+#map {
+  height: 300px;
+  background-color: skyblue;
 }
 
 #scroll-area {
