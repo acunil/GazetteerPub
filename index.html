@@ -31,12 +31,32 @@
   <!-- -----------------------------------------BODY--------------------------------------------- -->
 
   <body>
+    <!-- Header -->
     <header>
       <h1>Gazetteer</h1>
+
+      <select id="countries"></select>
     </header>
+
     <main>
       <div id="map"></div>
-      <div id="scroll-area"></div>
+      <section id="scroll-area">
+        <div id="country-info">
+          <p id="country-name">Country name: <span></span></p>
+          <p id="population">Population: <span></span></p>
+          <p id="languages">Languages: <span></span></p>
+          <p id="capital-name">Capital city: <span></span></p>
+        </div>
+        <div id="currency-info">
+          <p>Currency: <span></span></p>
+          <p id="currency-code"></p>
+          <div id="exchange-rates">
+            <p id="GBP">GBP: <span></span></p>
+            <p id="USD">USD: <span></span></p>
+            <p id="EUR">EUR: <span></span></p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- --------------------------------------------END OF VISIBLE CONTENT-------------------------------------------- -->

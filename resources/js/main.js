@@ -25,11 +25,6 @@ $(() => {
     localStorage.setItem("Gazetteer", JSON.stringify({})); // '{}'
   }
 
-  // create countries select element and add to DOM
-  $("header").append(
-    `<select id="countries"><option>Select a country</option></select>`
-  );
-
   // forEach through the countries list to populate options for the select box
   countryListAllIsoData.forEach(country => {
     let code3 = country["code3"].toLowerCase();
