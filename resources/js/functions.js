@@ -1,3 +1,5 @@
+import { APIkeys } from "./keys.js";
+
 // Function which accepts one argument - info - will be the countryInfo object with all the data
 export const renderDom = info => {
   // function to add commas to thousands
@@ -24,7 +26,8 @@ export const renderDom = info => {
     currencyName = currencyObject.name,
     currencySymbol = currencyObject.symbol,
     exchangeRates = info.openExchangeRates.data.rates,
-    currencyValueToUSD = exchangeRates[currencyCode];
+    latlng = info.restCountries.data.latlng,
+    area = info.restCountries.data.area;
 
   // CURRENCIES
   //
@@ -94,4 +97,28 @@ export const renderDom = info => {
   $("#SELF").html(
     `${currencyCode}: <span>${numberWithCommas(xrConverted.SELF)}</span>`
   );
+
+  /**
+   *
+   *
+   *             M A P
+   *
+   *
+   *
+   */
+  // create the map and set view
+  var mymap = L.map("map").setView([latlng[0], latlng[1]], 5);
+
+  L.tileLayer(
+    "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
+    {
+      attribution:
+        'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 18,
+      id: "mapbox/streets-v11",
+      tileSize: 512,
+      zoomOffset: -1,
+      accessToken: APIkeys.mapbox,
+    }
+  ).addTo(mymap);
 };

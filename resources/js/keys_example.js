@@ -4,4 +4,5 @@ export const APIkeys = {
   openCage: "YOUR_API_KEY",
   openWeather: "YOUR_API_KEY",
   openExchangeRates: "YOUR_API_KEY",
+  mapbox: "YOUR_API_KEY",
 };

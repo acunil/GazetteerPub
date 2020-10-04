@@ -65,7 +65,8 @@ $(() => {
         if (lat && long) {
           console.log("Success from navigator");
           console.log(lat, long);
-          //
+          // set lat and long to be accessible globally for the map icon your location
+          window.coords = { lat, long };
 
           getMyLocationInfo(lat, long, options);
         } else {
@@ -76,10 +77,6 @@ $(() => {
       console.warn("Location not found for user");
     }
   })(); // end of async wrapper
-
-  // add flag element to DOM flag
-  let flag = $(`<img src="" id="flag" style="width:200px"/>`);
-  $("#scroll-area").append(flag);
 
   // select onchange run code
   $("#countries").on("change", () => {
