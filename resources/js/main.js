@@ -28,6 +28,9 @@ $(() => {
     localStorage.setItem("Gazetteer", JSON.stringify({})); // '{}'
   }
 
+  // initialize map
+  window.mymap = L.map("map");
+
   // forEach through the countries list to populate options for the select box
   countryListAllIsoData.forEach(country => {
     let code3 = country["code3"].toLowerCase();

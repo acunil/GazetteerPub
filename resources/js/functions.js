@@ -106,8 +106,9 @@ export const renderDom = info => {
    *
    *
    */
+
   // create the map and set view
-  var mymap = L.map("map").setView([latlng[0], latlng[1]], 5);
+  mymap.setView([latlng[0], latlng[1]], 5);
 
   L.tileLayer(
     "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
