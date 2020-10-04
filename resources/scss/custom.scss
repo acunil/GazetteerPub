@@ -40,6 +40,7 @@ body {
   color: white;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
 
   p {
     font-size: 2em;
@@ -60,6 +61,7 @@ select {
 
 #map {
   height: 300px;
+  z-index: 100;
 }
 
 #scroll-area {
