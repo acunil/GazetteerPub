@@ -27,7 +27,9 @@ export const renderDom = info => {
     currencySymbol = currencyObject.symbol,
     exchangeRates = info.openExchangeRates.data.rates,
     latlng = info.restCountries.data.latlng,
-    area = info.restCountries.data.area;
+    area = info.restCountries.data.area,
+    continent = info.restCountries.data.subregion,
+    nativeName = info.restCountries.data.nativeName;
 
   // CURRENCIES
   //
@@ -76,6 +78,8 @@ export const renderDom = info => {
   $("#population span").html(
     numberWithCommas(Math.round(population / 10000) * 10000)
   );
+  $("#area span").html(numberWithCommas(area) + " km&sup2");
+  $("#continent span").html(continent);
 
   // languages loop
   let languageNames = languages.reduce((acc, el) => {
@@ -122,4 +126,14 @@ export const renderDom = info => {
       accessToken: APIkeys.mapbox,
     }
   ).addTo(mymap);
+
+  if (window.myCoords) {
+    if (!window.myCoords.flagAdded) {
+      var myPosition = L.marker([myCoords.lat, myCoords.long]).addTo(mymap);
+      window.myCoords.flagAdded = true;
+      myPosition
+        .bindPopup(`<b>You are here in<br>${nativeName}</b>`)
+        .openPopup();
+    }
+  }
 };

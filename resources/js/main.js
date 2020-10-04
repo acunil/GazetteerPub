@@ -69,7 +69,7 @@ $(() => {
           console.log("Success from navigator");
           console.log(lat, long);
           // set lat and long to be accessible globally for the map icon your location
-          window.coords = { lat, long };
+          window.myCoords = { lat, long };
 
           getMyLocationInfo(lat, long, options);
         } else {
@@ -83,6 +83,10 @@ $(() => {
 
   // select onchange run code
   $("#countries").on("change", () => {
+    // show loading screen
+    $("#loading").css({ display: "flex" });
+
+    // retrieve selected country code
     let currentCountryCode = $("#countries option:selected").val(); // gbr
     console.warn(`Active country changed to ${currentCountryCode}`);
 
