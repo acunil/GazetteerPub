@@ -35,7 +35,6 @@ export const renderDom = info => {
   //
   // variable to deal with low value currencies
   let adjustmentMultiplier = 1;
-  console.error(exchangeRates[currencyCode]);
   while (adjustmentMultiplier < exchangeRates[currencyCode]) {
     adjustmentMultiplier *= 10;
     console.log("adjustmentMultiplier is now " + adjustmentMultiplier);
