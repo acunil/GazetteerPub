@@ -145,14 +145,24 @@ export const renderDom = info => {
   // create the map and set view
   mymap.setView([latlng[0], latlng[1]], zoomLevel);
 
+  /* 
+  mapbox styles (replace id):
+  streets-v11
+  outdoors-v11
+  light-v10
+  dark-v10
+  satellite-v9
+  satellite-streets-v11
+  */
+
   L.tileLayer(
     "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
     {
       attribution:
-        'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       maxZoom: 17,
       minZoom: 2,
-      id: "mapbox/streets-v11",
+      id: "mapbox/satellite-streets-v11",
       tileSize: 512,
       zoomOffset: -1,
       accessToken: APIkeys.mapbox,
