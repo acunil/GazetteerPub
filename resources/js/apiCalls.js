@@ -5,17 +5,18 @@ import { APIkeys } from "./keys.js";
 export const getMyLocationInfo = async (lat, long, options) => {
   try {
     return await $.ajax({
-      url: `https://api.opencagedata.com/geocode/v1/json?key=${APIkeys.openCage}&q=${lat}%2C${long}`,
+      url: "resources/php/openCage.php",
       type: "GET",
       dataType: "json",
       data: {
         lat: lat,
         long: long,
+        key: APIkeys.openCage,
       },
       success(result) {
         console.log("Success from OpenCage");
         console.log(result);
-        const code = result.results[0].components[
+        const code = result.data.results[0].components[
           "ISO_3166-1_alpha-3"
         ].toLowerCase();
         $(`#countries option:selected`).attr("selected", null);

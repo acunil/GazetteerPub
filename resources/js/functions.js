@@ -117,8 +117,8 @@ export const renderDom = info => {
   } else if (area > 8000000) {
     // USA
     zoomLevel = 3;
-  } else if (area > 300000) {
-    // Finland
+  } else if (area > 240000) {
+    // UK
     zoomLevel = 4;
   } else if (area > 40000) {
     // Estonia
@@ -128,18 +128,6 @@ export const renderDom = info => {
   } else {
     // Liechtenstein
     zoomLevel = 8;
-  }
-
-  let test = 5;
-  switch (test) {
-    case test > 4:
-      console.log("greater than 4");
-      break;
-    case test > 1:
-      console.log("greater than 1");
-      break;
-    default:
-      console.log("default");
   }
 
   // create the map and set view
@@ -156,16 +144,12 @@ export const renderDom = info => {
   */
 
   L.tileLayer(
-    "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
+    "https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}",
     {
       attribution:
-        'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-      maxZoom: 17,
+        "Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC",
+      maxZoom: 9,
       minZoom: 2,
-      id: "mapbox/satellite-streets-v11",
-      tileSize: 512,
-      zoomOffset: -1,
-      accessToken: APIkeys.mapbox,
     }
   ).addTo(mymap);
 
