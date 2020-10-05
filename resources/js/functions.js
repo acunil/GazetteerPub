@@ -86,7 +86,7 @@ export const renderDom = info => {
   $("#languages span").html(languageNames.join(", ")); // switch to forEach for multiple langs
 
   $("#capital-name span").html(capitalName);
-  $("#currency-name span").html(currencyName + " " + currencyCode);
+  $("#currency-name span").html(currencyName + " [" + currencyCode + "]");
   $("#currency-code span").html(
     currencySymbol + numberWithCommas(xrConverted.SELF) + " is worth..."
   );
