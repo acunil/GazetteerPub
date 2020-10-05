@@ -74,9 +74,7 @@ export const renderDom = info => {
   //
   //
   $("#country-name span").html(countryName);
-  $("#population span").html(
-    numberWithCommas(Math.round(population / 10000) * 10000)
-  );
+  $("#population span").html(numberWithCommas(population));
   $("#area span").html(numberWithCommas(area) + " km&sup2");
   $("#continent span").html(continent);
 
@@ -110,19 +108,48 @@ export const renderDom = info => {
    *
    */
 
+  // determine zoom level based on country area:
+  let zoomLevel;
+
+  if (area > 10000000) {
+    // Russia
+    zoomLevel = 2;
+  } else if (area > 8000000) {
+    // USA
+    zoomLevel = 3;
+  } else if (area > 240000) {
+    // UK
+    zoomLevel = 4;
+  } else if (area > 40000) {
+    // Estonia
+    zoomLevel = 5;
+  } else if (area > 10000) {
+    zoomLevel = 6;
+  } else {
+    // Liechtenstein
+    zoomLevel = 8;
+  }
+
   // create the map and set view
-  mymap.setView([latlng[0], latlng[1]], 5);
+  mymap.setView([latlng[0], latlng[1]], zoomLevel);
+
+  /* 
+  mapbox styles (replace id):
+  streets-v11
+  outdoors-v11
+  light-v10
+  dark-v10
+  satellite-v9
+  satellite-streets-v11
+  */
 
   L.tileLayer(
-    "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
+    "https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}",
     {
       attribution:
-        'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-      maxZoom: 18,
-      id: "mapbox/streets-v11",
-      tileSize: 512,
-      zoomOffset: -1,
-      accessToken: APIkeys.mapbox,
+        "Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC",
+      maxZoom: 9,
+      minZoom: 2,
     }
   ).addTo(mymap);
 
