@@ -1,6 +1,6 @@
 body {
   font-size: 10pt;
-  background-color: lightblue;
+  background-color: white;
 }
 
 .flex-container {
@@ -26,7 +26,7 @@ body {
 }
 
 #main-container {
-  background-color: lightblue;
+  background-color: white;
   height: 100%;
 }
 
@@ -73,7 +73,7 @@ select {
   }
 
   .answer {
-    background-color: white;
+    background-color: #f1f1f1;
     font-size: 1.3em;
     text-align: left;
     border-radius: 0 15px 15px 0;
@@ -91,7 +91,7 @@ select {
         .xr {
           margin: 0 5px;
           font-size: 1.3em;
-          background-color: white;
+          background-color: #f1f1f1;
         }
       }
 
