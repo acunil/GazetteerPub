@@ -34,8 +34,9 @@ $(() => {
   // forEach through the countries list to populate options for the select box
   countryListAllIsoData.forEach(country => {
     let code3 = country["code3"].toLowerCase();
+    let code2 = country["code"].toLowerCase();
     let name = country["name"];
-    let flagUrl = `https://restcountries.eu/data/${code3}.svg`;
+    let flagUrl = `resources/img/flags/${code2}.png`;
     let template = `<option value="${code3}" data-img_src="${flagUrl}">${name}</option>`;
     $("#countries").append(template);
   });

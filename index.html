@@ -40,16 +40,18 @@
   <!-- -----------------------------------------BODY--------------------------------------------- -->
 
   <body>
-    <div id="main-container" class="container-lg">
+    <div id="main-container" class="container-xl">
       <!-- Header -->
       <header>
-        <div id="title-logo" class="flex-container">
-          <p>Gazetteer</p>
-          <img src="./resources/img/globe.png" alt="" />
+        <div class="container-lg">
+          <div id="title-logo" class="flex-container col-sm">
+            <p>Gazetteer</p>
+            <img src="./resources/img/globe.png" alt="" />
+          </div>
+          <select id="countries" class="col-sm">
+            <option value="Select a country">Select a country</option>
+          </select>
         </div>
-        <select id="countries">
-          <option value="Select a country">Select a country</option>
-        </select>
       </header>
 
       <main>
@@ -64,38 +66,41 @@
         <section id="scroll-area">
           <div id="country-info">
             <div id="country-name" class="row">
-              <div class="col-sm-2 question">Country:</div>
-              <div class="col-sm-9 answer"></div>
+              <div class="col-3 question">Country:</div>
+              <div class="col-8 answer"></div>
             </div>
             <div id="capital-name" class="row">
-              <div class="col-sm-2 question">Capital:</div>
-              <div class="col-sm-9 answer"></div>
+              <div class="col-3 question">Capital:</div>
+              <div class="col-8 answer"></div>
             </div>
             <div id="continent" class="row">
-              <div class="col-sm-2 question">Continent:</div>
-              <div class="col-sm-9 answer"></div>
+              <div class="col-3 question">Continent:</div>
+              <div class="col-8 answer"></div>
             </div>
             <div id="population" class="row">
-              <div class="col-sm-2 question">Population:</div>
-              <div class="col-sm-9 answer"></div>
+              <div class="col-3 question">Population:</div>
+              <div class="col-8 answer"></div>
             </div>
             <div id="area" class="row">
-              <div class="col-sm-2 question">Area:</div>
-              <div class="col-sm-9 answer"></div>
+              <div class="col-3 question">Area:</div>
+              <div class="col-8 answer"></div>
             </div>
             <div id="languages" class="row">
-              <div class="col-sm-2 question">Languages:</div>
-              <div class="col-sm-9 answer"></div>
+              <div class="col-3 question">Languages:</div>
+              <div class="col-8 answer"></div>
             </div>
           </div>
           <div id="currency-info">
-            <p id="currency-name">Currency: <span></span></p>
+            <div id="currency-name" class="row">
+              <div class="col-3 question">Currency:</div>
+              <div class="col-8 answer"></div>
+            </div>
             <p id="currency-code"><span></span></p>
-            <div id="exchange-rates" class="flex-container">
-              <div id="SELF"></div>
-              <div id="GBP">GBP: <span></span></div>
-              <div id="USD">USD: <span></span></div>
-              <div id="EUR">EUR: <span></span></div>
+            <div id="exchange-rates" class="row">
+              <div id="SELF" class="col-sm3"></div>
+              <div id="GBP" class="col-sm3">GBP: <span></span></div>
+              <div id="USD" class="col-sm3">USD: <span></span></div>
+              <div id="EUR" class="col-sm3">EUR: <span></span></div>
             </div>
           </div>
         </section>

@@ -86,9 +86,11 @@ export const renderDom = info => {
   }, []);
   $("#languages .answer").html(languageNames.join(", ")); // switch to forEach for multiple langs
 
-  $("#currency-name span").html(currencyName + " [" + currencyCode + "]");
+  $("#currency-name .answer").html(currencyName + " [" + currencyCode + "]");
   $("#currency-code span").html(
-    currencySymbol + numberWithCommas(xrConverted.SELF) + " is worth..."
+    (currencySymbol || currencyCode) +
+      numberWithCommas(xrConverted.SELF) +
+      " is worth..."
   );
 
   // exchange rates here

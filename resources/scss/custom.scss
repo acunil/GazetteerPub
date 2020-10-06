@@ -2,6 +2,10 @@ body {
   font-size: 10pt;
 }
 
+.flex-container {
+  display: flex;
+}
+
 #title-logo {
   color: navy;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
@@ -10,10 +14,6 @@ body {
     height: 40px;
     padding: 8px 4px;
   }
-}
-
-.flex-container {
-  display: flex;
 }
 
 .option {
@@ -49,9 +49,8 @@ body {
 
 select {
   border-radius: 3px;
-
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  height: auto;
+  height: 40px;
 }
 
 .select2-container--default .select2-selection--single {
