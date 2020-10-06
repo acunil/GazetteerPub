@@ -1,5 +1,3 @@
-import { APIkeys } from "./keys.js";
-
 // Function which accepts one argument - info - will be the countryInfo object with all the data
 export const renderDom = info => {
   // function to add commas to thousands
@@ -87,18 +85,21 @@ export const renderDom = info => {
   $("#languages .answer").html(languageNames.join(", ")); // switch to forEach for multiple langs
 
   $("#currency-name .answer").html(currencyName + " [" + currencyCode + "]");
-  $("#currency-code span").html(
+
+  $("#currency-worth").html(
     (currencySymbol || currencyCode) +
       numberWithCommas(xrConverted.SELF) +
-      " is worth..."
+      "<br>is worth:"
   );
 
   // exchange rates here
-  $("#GBP span").html(xrConverted.GBP);
-  $("#USD span").html(xrConverted.USD);
-  $("#EUR span").html(xrConverted.EUR);
+  $("#GBP div").html(xrConverted.GBP);
+  $("#USD div").html(xrConverted.USD);
+  $("#EUR div").html(xrConverted.EUR);
   $("#SELF").html(
-    `${currencyCode}: <span>${numberWithCommas(xrConverted.SELF)}</span>`
+    `${currencyCode}: <div class="xr rounded-pill">${numberWithCommas(
+      xrConverted.SELF
+    )}</div>`
   );
 
   /**

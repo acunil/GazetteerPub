@@ -1,5 +1,6 @@
 body {
   font-size: 10pt;
+  background-color: lightblue;
 }
 
 .flex-container {
@@ -74,14 +75,6 @@ select {
   z-index: 100;
 }
 
-#scroll-area {
-  text-align: center;
-}
-
-#scroll-area span {
-  font-size: 1.3em;
-}
-
 #scroll-area .row {
   padding-top: 5px;
 }
@@ -92,22 +85,15 @@ select {
 
 #scroll-area .answer {
   background-color: white;
-  border-radius: 20px;
   font-size: 1.3em;
   text-align: left;
-}
-
-#scroll-area #country-info {
-  padding: 5px;
-}
-
-#scroll-area #currency-info {
-  padding: 5px;
+  border-radius: 0 15px 15px 0;
 }
 
 #scroll-area #currency-info #exchange-rates {
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 100%;
 }
 
@@ -116,6 +102,12 @@ select {
       -ms-flex-positive: 1;
           flex-grow: 1;
   text-align: center;
+}
+
+#scroll-area #currency-info #exchange-rates div .xr {
+  margin: 0 5px;
+  font-size: 1.3em;
+  background-color: white;
 }
 
 #scroll-area #currency-info #exchange-rates #SELF {

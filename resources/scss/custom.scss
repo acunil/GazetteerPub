@@ -1,5 +1,6 @@
 body {
   font-size: 10pt;
+  background-color: lightblue;
 }
 
 .flex-container {
@@ -63,11 +64,6 @@ select {
 }
 
 #scroll-area {
-  text-align: center;
-  span {
-    font-size: 1.3em;
-  }
-
   .row {
     padding-top: 5px;
   }
@@ -78,25 +74,25 @@ select {
 
   .answer {
     background-color: white;
-    border-radius: 20px;
     font-size: 1.3em;
     text-align: left;
-  }
-
-  #country-info {
-    padding: 5px;
+    border-radius: 0 15px 15px 0;
   }
 
   #currency-info {
-    padding: 5px;
-
     #exchange-rates {
-      justify-content: space-around;
+      justify-content: space-between;
       width: 100%;
 
       div {
         flex-grow: 1;
         text-align: center;
+
+        .xr {
+          margin: 0 5px;
+          font-size: 1.3em;
+          background-color: white;
+        }
       }
 
       #SELF {

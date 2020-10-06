@@ -40,7 +40,7 @@
   <!-- -----------------------------------------BODY--------------------------------------------- -->
 
   <body>
-    <div id="main-container" class="container-xl">
+    <div id="main-container" class="container-lg">
       <!-- Header -->
       <header>
         <div class="container-lg">
@@ -95,12 +95,24 @@
               <div class="col-3 question">Currency:</div>
               <div class="col-8 answer"></div>
             </div>
-            <p id="currency-code"><span></span></p>
-            <div id="exchange-rates" class="row">
-              <div id="SELF" class="col-sm3"></div>
-              <div id="GBP" class="col-sm3">GBP: <span></span></div>
-              <div id="USD" class="col-sm3">USD: <span></span></div>
-              <div id="EUR" class="col-sm3">EUR: <span></span></div>
+            <div class="row">
+              <div id="currency-worth" class="col-3 question"></div>
+              <div id="exchange-rates" class="col-8 flex-container">
+                <div id="SELF" class="question"></div>
+
+                <div id="GBP" class="question">
+                  GBP:
+                  <div class="xr rounded-pill"></div>
+                </div>
+                <div id="USD" class="question">
+                  USD:
+                  <div class="xr rounded-pill"></div>
+                </div>
+                <div id="EUR" class="question">
+                  EUR:
+                  <div class="xr rounded-pill"></div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
