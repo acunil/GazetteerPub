@@ -11,11 +11,19 @@ export const renderDom = info => {
   // Check currency object is valid
   var currencies = info.restCountries.data.currencies;
   var currencyObject;
-  for (let i = 0; i < currencies.length; i++) {
-    if (currencies[i].code.length === 3) {
-      currencyObject = currencies[i];
-      break;
+  try {
+    //
+
+    for (let i = 0; i < currencies.length; i++) {
+      if (currencies[i].code && currencies[i].code.length === 3) {
+        currencyObject = currencies[i];
+        break;
+      }
     }
+  } catch (e) {
+    //
+    console.log("There was an error with the currency object:");
+    console.log(e);
   }
 
   // Access data and assign to variables
@@ -95,9 +103,9 @@ export const renderDom = info => {
   );
 
   $("#currency-worth").html(
-    (currencySymbol || currencyCode) +
-      numberWithCommas(xrConverted.SELF) +
-      "<br>is worth:"
+    `<span>${currencySymbol || currencyCode}${numberWithCommas(
+      xrConverted.SELF
+    )}</span><br>is worth:`
   );
 
   // exchange rates here

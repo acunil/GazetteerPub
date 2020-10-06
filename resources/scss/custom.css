@@ -2,7 +2,6 @@ body {
   font-size: 10pt;
   background-color: white;
   color: #333;
-  font-family: "Kulim Park", Verdana, sans-serif;
 }
 
 .flex-container {
@@ -96,11 +95,12 @@ select {
 }
 
 #scroll-area .row {
-  padding-top: 5px;
+  margin-top: 10px;
 }
 
 #scroll-area .question {
   text-align: right;
+  font-family: "Secular One";
 }
 
 #scroll-area .answer {
@@ -109,7 +109,6 @@ select {
   text-align: left;
   border-radius: 0 15px 15px 0;
   font-weight: 700;
-  font-family: "Reem Kufi", "Franklin Gothic", serif;
 }
 
 #scroll-area #currency-info #exchange-rates {
@@ -130,7 +129,6 @@ select {
   margin: 0 5px;
   font-size: 1.3em;
   background-color: #f1f1f1;
-  font-family: "Reem Kufi", "Franklin Gothic", serif;
 }
 
 #scroll-area #currency-info #exchange-rates #SELF {
