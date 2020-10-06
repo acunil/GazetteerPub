@@ -2,6 +2,9 @@
 export const renderDom = info => {
   // function to add commas to thousands
   function numberWithCommas(x) {
+    if (!x) {
+      return null;
+    }
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
@@ -75,7 +78,9 @@ export const renderDom = info => {
   $("#capital-name .answer").html(capitalName);
   $("#continent .answer").html(continent);
   $("#population .answer").html(numberWithCommas(population));
-  $("#area .answer").html(numberWithCommas(area) + " km&sup2");
+  $("#area .answer").html(
+    area ? numberWithCommas(area) + " km&sup2" : "unknown"
+  );
 
   // languages loop
   let languageNames = languages.reduce((acc, el) => {
