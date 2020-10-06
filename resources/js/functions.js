@@ -73,19 +73,19 @@ export const renderDom = info => {
   //
   //
   //
-  $("#country-name span").html(countryName);
-  $("#population span").html(numberWithCommas(population));
-  $("#area span").html(numberWithCommas(area) + " km&sup2");
-  $("#continent span").html(continent);
+  $("#country-name .answer").html(countryName);
+  $("#capital-name .answer").html(capitalName);
+  $("#continent .answer").html(continent);
+  $("#population .answer").html(numberWithCommas(population));
+  $("#area .answer").html(numberWithCommas(area) + " km&sup2");
 
   // languages loop
   let languageNames = languages.reduce((acc, el) => {
     acc.push(el.name);
     return acc;
   }, []);
-  $("#languages span").html(languageNames.join(", ")); // switch to forEach for multiple langs
+  $("#languages .answer").html(languageNames.join(", ")); // switch to forEach for multiple langs
 
-  $("#capital-name span").html(capitalName);
   $("#currency-name span").html(currencyName + " [" + currencyCode + "]");
   $("#currency-code span").html(
     currencySymbol + numberWithCommas(xrConverted.SELF) + " is worth..."

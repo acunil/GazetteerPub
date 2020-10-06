@@ -63,7 +63,6 @@ select {
   border-radius: 3px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   height: auto;
-  width: 100%;
 }
 
 .select2-container--default .select2-selection--single {
@@ -81,6 +80,21 @@ select {
 
 #scroll-area span {
   font-size: 1.3em;
+}
+
+#scroll-area .row {
+  padding-top: 5px;
+}
+
+#scroll-area .question {
+  text-align: right;
+}
+
+#scroll-area .answer {
+  background-color: white;
+  border-radius: 20px;
+  font-size: 1.3em;
+  text-align: left;
 }
 
 #scroll-area #country-info {
