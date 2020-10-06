@@ -90,7 +90,9 @@ export const renderDom = info => {
   }, []);
   $("#languages .answer").html(languageNames.join(", ")); // switch to forEach for multiple langs
 
-  $("#currency-name .answer").html(currencyName + " [" + currencyCode + "]");
+  $("#currency-name .answer").html(
+    `${currencyName} <small>[${currencyCode}]</small>`
+  );
 
   $("#currency-worth").html(
     (currencySymbol || currencyCode) +

@@ -1,6 +1,7 @@
 body {
   font-size: 10pt;
   background-color: white;
+  color: #333;
   font-family: "Kulim Park", Verdana, sans-serif;
 }
 
@@ -22,6 +23,7 @@ body {
 }
 
 .option {
+  font-weight: 600;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -107,6 +109,7 @@ select {
   text-align: left;
   border-radius: 0 15px 15px 0;
   font-weight: 700;
+  font-family: "Reem Kufi", "Franklin Gothic", serif;
 }
 
 #scroll-area #currency-info #exchange-rates {
@@ -127,6 +130,7 @@ select {
   margin: 0 5px;
   font-size: 1.3em;
   background-color: #f1f1f1;
+  font-family: "Reem Kufi", "Franklin Gothic", serif;
 }
 
 #scroll-area #currency-info #exchange-rates #SELF {
