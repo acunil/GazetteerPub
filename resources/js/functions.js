@@ -30,7 +30,8 @@ export const renderDom = info => {
     latlng = info.restCountries.data.latlng,
     area = info.restCountries.data.area,
     continent = info.restCountries.data.subregion,
-    nativeName = info.restCountries.data.nativeName;
+    nativeName = info.restCountries.data.nativeName,
+    countryCode2 = info.restCountries.data.alpha2Code.toLowerCase();
 
   // CURRENCIES
   //
@@ -115,6 +116,9 @@ export const renderDom = info => {
    *
    *
    */
+
+  // flag
+  $("#flag img").attr("src", `resources/img/flags/${countryCode2}.png`);
 
   // determine zoom level based on country area:
   let zoomLevel;
