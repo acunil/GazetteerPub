@@ -60,11 +60,14 @@ body {
 
 #loading p {
   font-size: 2em;
+  -webkit-animation: pulse 1.4s ease-in infinite;
+          animation: pulse 1.4s ease-in infinite;
 }
 
 select {
   border-radius: 3px;
   height: 40px;
+  width: 50%;
 }
 
 .select2-container--default .select2-selection--single {
@@ -132,5 +135,29 @@ select {
 
 #scroll-area #currency-info #exchange-rates #SELF {
   display: none;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 /*# sourceMappingURL=custom.css.map */

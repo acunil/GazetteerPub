@@ -40,24 +40,24 @@ $(() => {
     let template = `<option value="${code3}" data-img_src="${flagPath}">${name}</option>`;
     $("#countries").append(template);
   });
-  // Convert dropdown to have flag icons
-  function custom_template(obj) {
-    var data = $(obj.element).data();
-    var text = $(obj.element).text();
-    if (data && data["img_src"]) {
-      let img_src = data["img_src"];
-      let template = $(
-        `<div class='flex-container option'><img src="${img_src}" style="width:30px;height:1em;"/><p style="position:relative; top:6px;">${text}</p></div>`
-      );
-      return template;
-    }
-  }
-  var options = {
-    placeholder: "Select a country",
-    templateSelection: custom_template,
-    templateResult: custom_template,
-  };
-  $("#countries").select2(options);
+  // // Convert dropdown to have flag icons
+  // function custom_template(obj) {
+  //   var data = $(obj.element).data();
+  //   var text = $(obj.element).text();
+  //   if (data && data["img_src"]) {
+  //     let img_src = data["img_src"];
+  //     let template = $(
+  //       `<div class='flex-container option'><p style="position:relative; top:6px;">${text}</p></div>`
+  //     );
+  //     return template;
+  //   }
+  // }
+  // var options = {
+  //   placeholder: "Select a country",
+  //   templateSelection: custom_template,
+  //   templateResult: custom_template,
+  // };
+  // $("#countries").select2(options);
 
   // Async wrapper to get navigator location
   (async () => {
@@ -72,7 +72,7 @@ $(() => {
           // set lat and long to be accessible globally for the map icon your location
           window.myCoords = { lat, long };
 
-          getMyLocationInfo(lat, long, options);
+          getMyLocationInfo(lat, long);
         } else {
           console.warn("Location not found for user");
         }
@@ -83,7 +83,7 @@ $(() => {
   })(); // end of async wrapper
 
   // select onchange run code
-  $("#countries").on("change", () => {
+  $("#countries").change(() => {
     // show loading screen
     $("#loading").css({ display: "flex" });
 
