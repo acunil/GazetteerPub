@@ -68,6 +68,9 @@ header {
     z-index: 410;
     img {
       height: 40px;
+      @media all and (min-height: 866px) {
+        height: 60px;
+      }
     }
   }
 }

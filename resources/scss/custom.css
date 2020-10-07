@@ -85,6 +85,12 @@ header select {
   height: 40px;
 }
 
+@media all and (min-height: 866px) {
+  #map #flag img {
+    height: 60px;
+  }
+}
+
 #scroll-area .row {
   margin-top: 10px;
 }
