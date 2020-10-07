@@ -34,9 +34,10 @@ $(() => {
   // forEach through the countries list to populate options for the select box
   countryListAllIsoData.forEach(country => {
     let code3 = country["code3"].toLowerCase();
+    let code2 = country["code"].toLowerCase();
     let name = country["name"];
-    let flagUrl = `https://restcountries.eu/data/${code3}.svg`;
-    let template = `<option value="${code3}" data-img_src="${flagUrl}">${name}</option>`;
+    let flagPath = `resources/img/flags/${code2}.png`;
+    let template = `<option value="${code3}" data-img_src="${flagPath}">${name}</option>`;
     $("#countries").append(template);
   });
   // Convert dropdown to have flag icons
@@ -46,7 +47,7 @@ $(() => {
     if (data && data["img_src"]) {
       let img_src = data["img_src"];
       let template = $(
-        `<div class='flex-container option'><img src="${img_src}" style="width:auto;height:1em;"/><p style="position:relative; top:6px;">${text}</p></div>`
+        `<div class='flex-container option'><img src="${img_src}" style="width:30px;height:1em;"/><p style="position:relative; top:6px;">${text}</p></div>`
       );
       return template;
     }

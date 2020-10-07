@@ -1,10 +1,17 @@
 body {
   font-size: 10pt;
+  background-color: white;
+  color: #333;
+  // font-family: "Kulim Park", Verdana, sans-serif;
+}
+
+.flex-container {
+  display: flex;
 }
 
 #title-logo {
-  color: navy;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: #333;
+  font-family: "Overlock SC", "Arial Narrow", Arial, sans-serif;
   font-size: 30px;
   img {
     height: 40px;
@@ -12,11 +19,8 @@ body {
   }
 }
 
-.flex-container {
-  display: flex;
-}
-
 .option {
+  font-weight: 600;
   align-items: center;
   height: 2em;
   * {
@@ -25,7 +29,7 @@ body {
 }
 
 #main-container {
-  background-color: lightblue;
+  background-color: white;
   height: 100%;
 }
 
@@ -36,8 +40,8 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: navy;
-  color: white;
+  background-color: #fff;
+  color: #333;
   align-items: center;
   justify-content: center;
   z-index: 1000;
@@ -49,10 +53,7 @@ body {
 
 select {
   border-radius: 3px;
-
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  height: auto;
-  width: 100%;
+  height: 40px;
 }
 
 .select2-container--default .select2-selection--single {
@@ -62,28 +63,58 @@ select {
 #map {
   height: 300px;
   z-index: 100;
+  @media all and (min-height: 866px) {
+    height: 500px;
+  }
+  #flag {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    z-index: 410;
+    img {
+      height: 40px;
+    }
+  }
 }
 
 #scroll-area {
-  text-align: center;
-  span {
-    font-size: 1.3em;
+  .row {
+    margin-top: 10px;
   }
 
-  #country-info {
-    padding: 5px;
+  .question {
+    text-align: right;
+    font-family: "Secular One";
+  }
+
+  .answer {
+    background-color: #f1f1f1;
+    font-size: 1.3em;
+    text-align: left;
+    border-radius: 0 15px 15px 0;
+    font-weight: 700;
+    // font-family: "Reem Kufi", "Franklin Gothic", serif;
   }
 
   #currency-info {
-    padding: 5px;
+    span {
+      // font-family: "Reem Kufi", "Franklin Gothic", serif;
+    }
 
     #exchange-rates {
-      justify-content: space-around;
+      justify-content: space-between;
       width: 100%;
 
       div {
         flex-grow: 1;
         text-align: center;
+
+        .xr {
+          margin: 0 5px;
+          font-size: 1.3em;
+          background-color: #f1f1f1;
+          // font-family: "Reem Kufi", "Franklin Gothic", serif;
+        }
       }
 
       #SELF {
