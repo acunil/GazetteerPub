@@ -1,16 +1,7 @@
 body {
   font-size: 10pt;
-}
-
-#title-logo {
-  color: navy;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  font-size: 30px;
-}
-
-#title-logo img {
-  height: 40px;
-  padding: 8px 4px;
+  background-color: white;
+  color: #333;
 }
 
 .flex-container {
@@ -19,7 +10,19 @@ body {
   display: flex;
 }
 
+#title-logo {
+  color: #333;
+  font-family: "Overlock SC", "Arial Narrow", Arial, sans-serif;
+  font-size: 30px;
+}
+
+#title-logo img {
+  height: 40px;
+  padding: 8px 4px;
+}
+
 .option {
+  font-weight: 600;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -31,7 +34,7 @@ body {
 }
 
 #main-container {
-  background-color: lightblue;
+  background-color: white;
   height: 100%;
 }
 
@@ -44,8 +47,8 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: navy;
-  color: white;
+  background-color: #fff;
+  color: #333;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -61,9 +64,7 @@ body {
 
 select {
   border-radius: 3px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  height: auto;
-  width: 100%;
+  height: 40px;
 }
 
 .select2-container--default .select2-selection--single {
@@ -75,25 +76,44 @@ select {
   z-index: 100;
 }
 
-#scroll-area {
-  text-align: center;
+@media all and (min-height: 866px) {
+  #map {
+    height: 500px;
+  }
 }
 
-#scroll-area span {
+#map #flag {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  z-index: 410;
+}
+
+#map #flag img {
+  height: 40px;
+}
+
+#scroll-area .row {
+  margin-top: 10px;
+}
+
+#scroll-area .question {
+  text-align: right;
+  font-family: "Secular One";
+}
+
+#scroll-area .answer {
+  background-color: #f1f1f1;
   font-size: 1.3em;
-}
-
-#scroll-area #country-info {
-  padding: 5px;
-}
-
-#scroll-area #currency-info {
-  padding: 5px;
+  text-align: left;
+  border-radius: 0 15px 15px 0;
+  font-weight: 700;
 }
 
 #scroll-area #currency-info #exchange-rates {
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 100%;
 }
 
@@ -102,6 +122,12 @@ select {
       -ms-flex-positive: 1;
           flex-grow: 1;
   text-align: center;
+}
+
+#scroll-area #currency-info #exchange-rates div .xr {
+  margin: 0 5px;
+  font-size: 1.3em;
+  background-color: #f1f1f1;
 }
 
 #scroll-area #currency-info #exchange-rates #SELF {

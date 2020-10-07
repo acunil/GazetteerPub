@@ -30,6 +30,16 @@
       crossorigin=""
     />
 
+    <!-- fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kulim+Park:ital,wght@0,200;0,300;0,600;1,200&family=Overlock+SC&family=Reem+Kufi&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Secular+One&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./resources/scss/custom.css" />
     <link rel="icon" type="image/png" href="./resources/img/globe.png" />
@@ -40,16 +50,18 @@
   <!-- -----------------------------------------BODY--------------------------------------------- -->
 
   <body>
-    <div id="main-container">
+    <div id="main-container" class="container-lg">
       <!-- Header -->
       <header>
-        <div id="title-logo" class="flex-container">
-          <p>Gazetteer</p>
-          <img src="./resources/img/globe.png" alt="" />
+        <div class="container-lg">
+          <div id="title-logo" class="flex-container col-sm">
+            <p>Gazetteer</p>
+            <img src="./resources/img/globe.png" alt="" />
+          </div>
+          <select id="countries" class="col-sm">
+            <option value="Select a country">Select a country</option>
+          </select>
         </div>
-        <select id="countries">
-          <option value="Select a country">Select a country</option>
-        </select>
       </header>
 
       <main>
@@ -58,26 +70,63 @@
           <p>Loading...</p>
         </div>
         <!-- Map -->
-        <div id="map"></div>
+        <div id="map" class="rounded">
+          <div id="flag">
+            <img src="" alt="" />
+          </div>
+        </div>
 
         <!-- Scroll Area -->
-        <section id="scroll-area">
+        <section id="scroll-area" data-spy="scroll">
           <div id="country-info">
-            <p id="country-name">Country name: <span></span></p>
-            <p id="continent">Continent: <span></span></p>
-            <p id="population">Population: <span></span></p>
-            <p id="area">Area: <span></span></p>
-            <p id="languages">Languages: <span></span></p>
-            <p id="capital-name">Capital city: <span></span></p>
+            <div id="country-name" class="row">
+              <div class="col-3 question">Country:</div>
+              <div class="col-8 answer"></div>
+            </div>
+            <div id="capital-name" class="row">
+              <div class="col-3 question">Capital:</div>
+              <div class="col-8 answer"></div>
+            </div>
+            <div id="continent" class="row">
+              <div class="col-3 question">Continent:</div>
+              <div class="col-8 answer"></div>
+            </div>
+            <div id="population" class="row">
+              <div class="col-3 question">Population:</div>
+              <div class="col-8 answer"></div>
+            </div>
+            <div id="area" class="row">
+              <div class="col-3 question">Area:</div>
+              <div class="col-8 answer"></div>
+            </div>
+            <div id="languages" class="row">
+              <div class="col-3 question">Languages:</div>
+              <div class="col-8 answer"></div>
+            </div>
           </div>
           <div id="currency-info">
-            <p id="currency-name">Currency: <span></span></p>
-            <p id="currency-code"><span></span></p>
-            <div id="exchange-rates" class="flex-container">
-              <div id="SELF"></div>
-              <div id="GBP">GBP: <span></span></div>
-              <div id="USD">USD: <span></span></div>
-              <div id="EUR">EUR: <span></span></div>
+            <div id="currency-name" class="row">
+              <div class="col-3 question">Currency:</div>
+              <div class="col-8 answer"></div>
+            </div>
+            <div class="row">
+              <div id="currency-worth" class="col-3 question"></div>
+              <div id="exchange-rates" class="col-8 flex-container">
+                <div id="SELF" class="question"></div>
+
+                <div id="GBP" class="question">
+                  GBP:
+                  <div class="xr rounded-pill"></div>
+                </div>
+                <div id="USD" class="question">
+                  USD:
+                  <div class="xr rounded-pill"></div>
+                </div>
+                <div id="EUR" class="question">
+                  EUR:
+                  <div class="xr rounded-pill"></div>
+                </div>
+              </div>
             </div>
           </div>
         </section>

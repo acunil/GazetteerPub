@@ -1,20 +1,29 @@
-import { APIkeys } from "./keys.js";
-
 // Function which accepts one argument - info - will be the countryInfo object with all the data
 export const renderDom = info => {
   // function to add commas to thousands
   function numberWithCommas(x) {
+    if (!x) {
+      return null;
+    }
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   // Check currency object is valid
   var currencies = info.restCountries.data.currencies;
   var currencyObject;
-  for (let i = 0; i < currencies.length; i++) {
-    if (currencies[i].code.length === 3) {
-      currencyObject = currencies[i];
-      break;
+  try {
+    //
+
+    for (let i = 0; i < currencies.length; i++) {
+      if (currencies[i].code && currencies[i].code.length === 3) {
+        currencyObject = currencies[i];
+        break;
+      }
     }
+  } catch (e) {
+    //
+    console.log("There was an error with the currency object:");
+    console.log(e);
   }
 
   // Access data and assign to variables
@@ -29,7 +38,8 @@ export const renderDom = info => {
     latlng = info.restCountries.data.latlng,
     area = info.restCountries.data.area,
     continent = info.restCountries.data.subregion,
-    nativeName = info.restCountries.data.nativeName;
+    nativeName = info.restCountries.data.nativeName,
+    countryCode2 = info.restCountries.data.alpha2Code.toLowerCase();
 
   // CURRENCIES
   //
@@ -73,30 +83,39 @@ export const renderDom = info => {
   //
   //
   //
-  $("#country-name span").html(countryName);
-  $("#population span").html(numberWithCommas(population));
-  $("#area span").html(numberWithCommas(area) + " km&sup2");
-  $("#continent span").html(continent);
+  $("#country-name .answer").html(countryName);
+  $("#capital-name .answer").html(capitalName);
+  $("#continent .answer").html(continent);
+  $("#population .answer").html(numberWithCommas(population));
+  $("#area .answer").html(
+    area ? numberWithCommas(area) + " km&sup2" : "unknown"
+  );
 
   // languages loop
   let languageNames = languages.reduce((acc, el) => {
     acc.push(el.name);
     return acc;
   }, []);
-  $("#languages span").html(languageNames.join(", ")); // switch to forEach for multiple langs
+  $("#languages .answer").html(languageNames.join(", ")); // switch to forEach for multiple langs
 
-  $("#capital-name span").html(capitalName);
-  $("#currency-name span").html(currencyName + " " + currencyCode);
-  $("#currency-code span").html(
-    currencySymbol + numberWithCommas(xrConverted.SELF) + " is worth..."
+  $("#currency-name .answer").html(
+    `${currencyName} <small>[${currencyCode}]</small>`
+  );
+
+  $("#currency-worth").html(
+    `<span>${currencySymbol || currencyCode}${numberWithCommas(
+      xrConverted.SELF
+    )}</span><br>is worth:`
   );
 
   // exchange rates here
-  $("#GBP span").html(xrConverted.GBP);
-  $("#USD span").html(xrConverted.USD);
-  $("#EUR span").html(xrConverted.EUR);
+  $("#GBP div").html(xrConverted.GBP);
+  $("#USD div").html(xrConverted.USD);
+  $("#EUR div").html(xrConverted.EUR);
   $("#SELF").html(
-    `${currencyCode}: <span>${numberWithCommas(xrConverted.SELF)}</span>`
+    `${currencyCode}: <div class="xr rounded-pill">${numberWithCommas(
+      xrConverted.SELF
+    )}</div>`
   );
 
   /**
@@ -107,6 +126,9 @@ export const renderDom = info => {
    *
    *
    */
+
+  // flag
+  $("#flag img").attr("src", `resources/img/flags/${countryCode2}.png`);
 
   // determine zoom level based on country area:
   let zoomLevel;
