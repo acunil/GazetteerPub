@@ -14,21 +14,25 @@ body {
 }
 
 header {
-  margin: 0 10px;
+  #header-container {
+    justify-content: center;
+    align-items: center;
+  }
 
   #title-logo {
     color: #333;
     font-family: "Overlock SC", "Arial Narrow", Arial, sans-serif;
     font-size: 30px;
+    margin: 0 4px;
     img {
       height: 40px;
-      padding: 8px 4px;
+      padding: 8px 4px 4px 4px;
     }
   }
 
   select {
     border-radius: 3px;
-    height: 40px;
+    height: 30px;
     width: 50%;
     margin: 4px, 0;
     option {
@@ -83,11 +87,12 @@ header {
   .question {
     text-align: right;
     font-family: "Secular One";
+    top: 5px;
   }
 
   .answer {
     background-color: #f1f1f1;
-    font-size: 1.3em;
+    font-size: 1.2em;
     text-align: left;
     border-radius: 0 15px 15px 0;
     font-weight: 700;
@@ -107,7 +112,7 @@ header {
 
         .xr {
           margin: 0 5px;
-          font-size: 1.3em;
+          font-size: 1.2em;
           background-color: #f1f1f1;
         }
       }
