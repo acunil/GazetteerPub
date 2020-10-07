@@ -2,30 +2,10 @@ body {
   font-size: 10pt;
   background-color: white;
   color: #333;
-  // font-family: "Kulim Park", Verdana, sans-serif;
 }
 
 .flex-container {
   display: flex;
-}
-
-#title-logo {
-  color: #333;
-  font-family: "Overlock SC", "Arial Narrow", Arial, sans-serif;
-  font-size: 30px;
-  img {
-    height: 40px;
-    padding: 8px 4px;
-  }
-}
-
-.option {
-  font-weight: 600;
-  align-items: center;
-  height: 2em;
-  * {
-    padding: 0 5px;
-  }
 }
 
 #main-container {
@@ -33,10 +13,37 @@ body {
   height: 100%;
 }
 
+header {
+  #header-container {
+    justify-content: center;
+    align-items: center;
+  }
+
+  #title-logo {
+    color: #333;
+    font-family: "Overlock SC", "Arial Narrow", Arial, sans-serif;
+    font-size: 30px;
+    margin: 0 4px;
+    img {
+      height: 40px;
+      padding: 8px 4px 4px 4px;
+    }
+  }
+
+  select {
+    border-radius: 3px;
+    height: 30px;
+    width: 50%;
+    margin: 4px, 0;
+    option {
+    }
+  }
+}
+
 #loading {
   display: flex;
   position: absolute;
-  top: 35px;
+  top: 0px;
   left: 0;
   width: 100%;
   height: 100%;
@@ -48,16 +55,8 @@ body {
 
   p {
     font-size: 2em;
+    animation: pulse 1.4s ease-in infinite;
   }
-}
-
-select {
-  border-radius: 3px;
-  height: 40px;
-}
-
-.select2-container--default .select2-selection--single {
-  height: auto;
 }
 
 #map {
@@ -73,6 +72,9 @@ select {
     z-index: 410;
     img {
       height: 40px;
+      @media all and (min-height: 866px) {
+        height: 60px;
+      }
     }
   }
 }
@@ -85,20 +87,19 @@ select {
   .question {
     text-align: right;
     font-family: "Secular One";
+    top: 5px;
   }
 
   .answer {
     background-color: #f1f1f1;
-    font-size: 1.3em;
+    font-size: 1.2em;
     text-align: left;
     border-radius: 0 15px 15px 0;
     font-weight: 700;
-    // font-family: "Reem Kufi", "Franklin Gothic", serif;
   }
 
   #currency-info {
     span {
-      // font-family: "Reem Kufi", "Franklin Gothic", serif;
     }
 
     #exchange-rates {
@@ -111,9 +112,8 @@ select {
 
         .xr {
           margin: 0 5px;
-          font-size: 1.3em;
+          font-size: 1.2em;
           background-color: #f1f1f1;
-          // font-family: "Reem Kufi", "Franklin Gothic", serif;
         }
       }
 
@@ -121,5 +121,19 @@ select {
         display: none;
       }
     }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

@@ -1,8 +1,9 @@
 "use strict";
 import { APIkeys } from "./keys.js";
+import { Event } from "./functions.js";
 
 // MY LOCATION
-export const getMyLocationInfo = async (lat, long, options) => {
+export const getMyLocationInfo = async (lat, long) => {
   try {
     return await $.ajax({
       url: "resources/php/openCage.php",
@@ -16,13 +17,17 @@ export const getMyLocationInfo = async (lat, long, options) => {
       success(result) {
         console.log("Success from OpenCage");
         console.log(result);
+
         const code = result.data.results[0].components[
           "ISO_3166-1_alpha-3"
         ].toLowerCase();
+
         $(`#countries option:selected`).attr("selected", null);
-        $(`#countries option[value='${code}']`).attr("selected", "selected");
-        $("#countries").val(code);
-        $("#countries").select2(options).trigger("change");
+        $(`#countries option[value='${code}']`).prop({ selected: true });
+        var select = document.querySelector("#countries");
+        select.dispatchEvent(new Event("change"));
+
+        // $("#countries").select2(options).trigger("change");
       },
       error(jqXHR, textStatus, errorThrown) {
         console.log(
