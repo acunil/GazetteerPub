@@ -10,32 +10,31 @@ body {
   display: flex;
 }
 
-#title-logo {
+#main-container {
+  background-color: white;
+  height: 100%;
+}
+
+header {
+  margin: 0 10px;
+}
+
+header #title-logo {
   color: #333;
   font-family: "Overlock SC", "Arial Narrow", Arial, sans-serif;
   font-size: 30px;
 }
 
-#title-logo img {
+header #title-logo img {
   height: 40px;
   padding: 8px 4px;
 }
 
-.option {
-  font-weight: 600;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 2em;
-}
-
-.option * {
-  padding: 0 5px;
-}
-
-#main-container {
-  background-color: white;
-  height: 100%;
+header select {
+  border-radius: 3px;
+  height: 40px;
+  width: 50%;
+  margin: 4px, 0;
 }
 
 #loading {
@@ -43,7 +42,7 @@ body {
   display: -ms-flexbox;
   display: flex;
   position: absolute;
-  top: 35px;
+  top: 0px;
   left: 0;
   width: 100%;
   height: 100%;
@@ -62,16 +61,6 @@ body {
   font-size: 2em;
   -webkit-animation: pulse 1.4s ease-in infinite;
           animation: pulse 1.4s ease-in infinite;
-}
-
-select {
-  border-radius: 3px;
-  height: 40px;
-  width: 50%;
-}
-
-.select2-container--default .select2-selection--single {
-  height: auto;
 }
 
 #map {
